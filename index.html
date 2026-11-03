@@ -96,13 +96,28 @@
     </article>
 
     <article class="research-block pretrain-block" id="pretrain">
-      <div class="research-heading"><span class="research-number">04</span><div><h3>Pretrain 数据管线与部分预训练工作</h3><p>围绕分层子任务监督，完成训练样本组织、动作窗口对齐和离线效果验证。</p></div><span class="evidence-tag">数据管线 / 离线评测</span></div>
+      <div class="research-heading"><span class="research-number">04</span><div><h3>Pretrain 数据管线与部分预训练工作</h3><p>展示 Ego 数据处理框架，以及分层子任务监督下的样本组织、动作窗口对齐与离线验证。</p></div><span class="evidence-tag">数据管线 / 离线评测</span></div>
+      <section class="data-pipeline-overview" id="data-pipeline" aria-labelledby="data-pipeline-title">
+        <div class="pretrain-subheading"><p class="eyebrow">EGO DATA PIPELINE</p><h4 id="data-pipeline-title">从原始 Ego 数据到可训练样本</h4><p>串联数据准备、分层语义标注与训练数据筛选，保留质量记录和版本信息。</p></div>
+        <div class="ego-pipeline">
+          <div class="pipeline-endpoint"><span>输入</span><p>原始视频 · 手部姿态 · 相机位姿</p></div>
+          <ol class="ego-pipeline-stages">
+            <li><span class="pipeline-stage-number">01</span><h5>数据准备</h5><p class="pipeline-stage-key">稳像 Transform + Measure</p><p>登记与版本管理、时间对齐、稳像切段；计算画面、手部与时钟的质量指标。</p></li>
+            <li><span class="pipeline-stage-number">02</span><h5>分层标注</h5><p class="pipeline-stage-key">Instruction → Coarse → Finer → Atomic</p><p>从整段任务逐级细化到操作步骤、左右手动作与接触状态，回写后补充文本结构检查。</p></li>
+            <li><span class="pipeline-stage-number">03</span><h5>筛选与导出</h5><p class="pipeline-stage-key">Recipe Run → Training Snapshot</p><p>合并质量指标与标注规则，筛选 episode、有效帧和训练窗口起点，导出训练数据。</p></li>
+          </ol>
+          <div class="pipeline-endpoint pipeline-output"><span>输出</span><p>训练快照与分片 <small>保留标注、筛选结果与版本记录</small></p></div>
+        </div>
+        <p class="research-note">质量计算与训练筛选分开：Transform 标记无效帧，Measure 记录指标，再由 Recipe Run 统一决定哪些数据进入训练。</p>
+        <details class="research-detail pipeline-source-detail"><summary>查看整体流程图 <span>＋</span></summary><div><figure class="architecture-panel"><figcaption><div><h4>Ego Data Pipeline 整体流程</h4><p>数据准备、分层视频标注、训练数据筛选与导出。</p></div><a href="assets/sharpa/data-pipeline-overview.jpg" target="_blank" rel="noopener">放大查看 ↗</a></figcaption><a class="zoom-image" href="assets/sharpa/data-pipeline-overview.jpg" target="_blank" rel="noopener"><img src="assets/sharpa/data-pipeline-overview.jpg" loading="lazy" width="2512" height="1482" alt="Ego 数据管线整体框架：登记与稳像、Measure 质量评估、四级视频标注、二次 Measure、Recipe Run 筛选、训练快照与训练分片。"></a></figure></div></details>
+      </section>
+      <div class="pretrain-subheading pretrain-validation-heading"><p class="eyebrow">PRETRAIN VALIDATION</p><h4>分层监督与预训练验证</h4></div>
       <div class="pipeline-strip"><div><span>01</span><h4>分层任务采样</h4><p>Instruction、coarse、finer、atomic 子任务组织。</p></div><div><span>02</span><h4>动作与时间对齐</h4><p>对齐 action chunk，处理截断、padding 与静止动作。</p></div><div><span>03</span><h4>训练与离线评测</h4><p>比较粗粒度与原子子任务监督，检查手腕和手指误差。</p></div></div>
       <div class="pretrain-summary"><p><strong>已完成的验证：</strong>完成采样分布检查，以及 Ego / 遥操、已见 / 未见任务的离线动作评测。coarse + GT atomic 的腕部位置误差整体更低，指尖指标随设置变化。GT atomic 指真实原子子任务标签。</p></div>
       <div class="plot-grid"><figure><a href="assets/sharpa/pretrain-eef.png" target="_blank" rel="noopener"><img src="assets/sharpa/pretrain-eef.png" loading="lazy" alt="腕部位置误差的离线验证曲线，比较 coarse only、coarse 加真实 atomic 和仅真实 atomic 三种监督设置。"></a><figcaption><strong>腕部位置误差</strong><span>离线验证 · 数值越低越好 · 点击查看原图 ↗</span></figcaption></figure><figure><a href="assets/sharpa/pretrain-fingertip.png" target="_blank" rel="noopener"><img src="assets/sharpa/pretrain-fingertip.png" loading="lazy" alt="指尖位置误差的离线验证曲线，不同监督方案在各验证设置下表现不同。"></a><figcaption><strong>指尖位置误差</strong><span>离线验证 · 不同设置存在取舍 · 点击查看原图 ↗</span></figcaption></figure></div>
       <details class="research-detail"><summary>查看预训练结构与数据采样结果 <span>＋</span></summary><div class="pretrain-details"><figure class="pretrain-architecture"><a href="assets/sharpa/pretrain-architecture-full.jpg" target="_blank" rel="noopener"><img src="assets/sharpa/pretrain-architecture-full.jpg" loading="lazy" alt="分层子任务、图像预测与 latent-action 预测相结合的预训练结构方案。"></a><figcaption>完整结构方案：分层子任务监督、图像预测与 Latent-action 预测。点击放大查看。</figcaption></figure><figure><a href="assets/sharpa/pretrain-sampling.png" target="_blank" rel="noopener"><img src="assets/sharpa/pretrain-sampling.png" loading="lazy" alt="训练样本的单步、规划、截断处理与单手增强模式的实际采样分布。"></a><figcaption>数据管线的采样分布检查，覆盖单步、规划、截断处理与单手增强。</figcaption></figure></div></details>
     </article>
-    <div class="research-sources"><span>研究资料</span><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/HqFzwe2gviWt6GktyDHc4Xjbnvg" target="_blank" rel="noopener noreferrer">触觉融合记录 ↗</a><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/QjE6wQMYzigqZEkxe37cwB96nNd" target="_blank" rel="noopener noreferrer">Policy 与真机记录 ↗</a><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/PmaHwqh09iU0cukWNJvc0YnQnV9" target="_blank" rel="noopener noreferrer">预训练记录 ↗</a><span class="source-access">原始文档可能需要权限；本页视频与图表可直接查看。</span></div>
+    <div class="research-sources"><span>研究资料</span><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/HqFzwe2gviWt6GktyDHc4Xjbnvg" target="_blank" rel="noopener noreferrer">触觉融合记录 ↗</a><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/QjE6wQMYzigqZEkxe37cwB96nNd" target="_blank" rel="noopener noreferrer">Policy 与真机记录 ↗</a><a href="https://fcn5hvc5qbfs.feishu.cn/wiki/PmaHwqh09iU0cukWNJvc0YnQnV9" target="_blank" rel="noopener noreferrer">预训练记录 ↗</a><a href="https://fcn5hvc5qbfs.feishu.cn/docx/ISPGdy3yBo81xGxlbqUcGLEznRg" target="_blank" rel="noopener noreferrer">Data Pipeline 记录 ↗</a><span class="source-access">原始文档可能需要权限；本页视频与图表可直接查看。</span></div>
   </div>
 </section>
 
