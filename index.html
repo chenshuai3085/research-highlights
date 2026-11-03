@@ -58,12 +58,14 @@
     <p class="research-ownership">陈帅负责视触觉融合的实现、policy 接入与真机验证；负责 pretrain 数据管线处理，并参与部分预训练与评测工作。</p>
 
     <article class="research-block" id="policy-validation">
-      <div class="research-heading"><span class="research-number">01</span><div><h3>视触觉融合与真机验证</h3><p>将三维触觉形变历史编码为触觉特征，接入 GR00T / WLA，在接触操作任务中验证效果。</p></div><span class="evidence-tag">真机评测</span></div>
+      <div class="research-heading"><span class="research-number">01</span><div><h3>视触觉融合与真机验证</h3><p>将触觉表征接入 GR00T / WLA（团队内基模），在安装电池、擦碗与拧瓶盖等接触操作任务中验证效果。</p></div><span class="evidence-tag">真机评测</span></div>
       <div class="comparison-cards">
-        <div class="comparison-card"><p>安装电池 · GR00T</p><div class="rate-change"><span>25<small>%</small></span><span class="rate-arrow">→</span><strong>65<small>%</small></strong></div><div class="comparison-legend"><span>基础模型</span><span>+ Deform3 触觉</span></div><span class="gain">+40 个百分点</span></div>
-        <div class="comparison-card"><p>安装电池 · WLA</p><div class="rate-change"><span>85<small>%</small></span><span class="rate-arrow">→</span><strong>90<small>%</small></strong></div><div class="comparison-legend"><span>Tactile Query</span><span>+ Deform3 触觉</span></div><span class="gain">+5 个百分点</span></div>
+        <div class="comparison-card"><p>安装电池 · GR00T<span class="comparison-model">Deform3 接入</span></p><div class="rate-change"><span>25<small>%</small></span><span class="rate-arrow">→</span><strong>65<small>%</small></strong></div><div class="comparison-legend"><span>基础模型</span><span>+ Deform3 触觉</span></div><span class="gain">+40 个百分点</span></div>
+        <div class="comparison-card"><p>安装电池 · WLA<span class="comparison-model">团队内基模 · Deform3 接入</span></p><div class="rate-change"><span>85<small>%</small></span><span class="rate-arrow">→</span><strong>90<small>%</small></strong></div><div class="comparison-legend"><span>Tactile Query</span><span>+ Deform3 触觉</span></div><span class="gain">+5 个百分点</span></div>
+        <div class="comparison-card"><p>擦碗 · GR00T<span class="comparison-model">Deform3 接入</span></p><div class="rate-change"><span>60<small>%</small></span><span class="rate-arrow">→</span><strong>65<small>%</small></strong></div><div class="comparison-legend"><span>基础模型</span><span>+ Deform3 触觉</span></div><span class="gain">+5 个百分点</span></div>
+        <div class="comparison-card"><p>拧瓶盖 · WLA<span class="comparison-model">团队内基模 · 触觉融入对比</span></p><div class="rate-change"><span>80<small>%</small></span><span class="rate-arrow">→</span><strong>95<small>%</small></strong></div><div class="comparison-legend"><span>Beta-WAN-TAC</span><span>Tactile Query</span></div><span class="gain">+15 个百分点</span></div>
       </div>
-      <p class="research-note">来自 10.29 Deform3 接入评测，同一记录内比较。擦碗任务：GR00T 60% → 65%，WLA 70% → 70%。</p>
+      <p class="research-note">安装电池、擦碗为 10.29 Deform3 接入评测；拧瓶盖为 8.24 Beta-WAN-TAC → Tactile Query 对比，各项均在对应记录内比较。WLA 擦碗成功率为 70% → 70%（持平）。</p>
       <div class="architecture-series" id="fusion-architecture">
         <div class="architecture-series-heading"><p class="eyebrow">FUSION ARCHITECTURE</p><h4>从触觉表征到 Policy</h4><p>先构建融合视觉的触觉 Contact Token，再接入动作策略。两部分分别展示，可点击放大。</p></div>
         <figure class="architecture-panel"><figcaption><span>A</span><div><h4>触觉表征与视触觉融合</h4><p>触觉历史作为 Query，与头部和腕部视觉特征交互，形成 Contact Token。</p></div><a href="assets/sharpa/fusion-representation.jpg" target="_blank" rel="noopener">放大查看 ↗</a></figcaption><a class="zoom-image" href="assets/sharpa/fusion-representation.jpg" target="_blank" rel="noopener"><img src="assets/sharpa/fusion-representation.jpg" loading="lazy" alt="触觉表征与融合：完整展示历史 Deform、状态 FiLM、注意力融合、Contact Token 与重建监督。"></a></figure>
@@ -80,7 +82,7 @@
         <article class="research-video"><video controls playsinline preload="none" poster="assets/sharpa/gtrca-battery.jpg" aria-label="Sharpa 门控触觉策略安装电池真机演示"><source src="assets/sharpa/gtrca-battery.mp4" type="video/mp4"></video><div><p class="eyebrow">GATED TACTILE POLICY · REAL ROBOT</p><h4>电池抓取与安装</h4><p>展示小物体抓取、接触对准与安装过程。</p><a href="assets/sharpa/gtrca-battery.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
         <article class="research-video portrait-video"><video controls playsinline preload="none" poster="assets/sharpa/tactile-teabox.jpg" aria-label="Sharpa Beta-WAN-TAC-v1 茶盒盖操作真机演示"><source src="assets/sharpa/tactile-teabox.mp4" type="video/mp4"></video><div><p class="eyebrow">BETA-WAN-TAC-v1 · REAL ROBOT</p><h4>茶盒盖操作</h4><p>融合触觉历史，展示盒盖抓持、分离与放回操作。</p><a href="assets/sharpa/tactile-teabox.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
       </div>
-      <p class="research-note">瓶盖与电池视频来自 GTRCA 触觉注入实验；茶盒来自 Beta-WAN-TAC-v1。刷碗为补充真机演示。上方成功率对应 Deform3 专项评测。</p>
+      <p class="research-note">瓶盖与电池视频来自 GTRCA 触觉注入实验；茶盒来自 Beta-WAN-TAC-v1。刷碗为补充真机演示。上方成功率分别对应 Deform3 与 Tactile Query 评测，视频展示不同实验版本的操作过程。</p>
       <details class="research-detail"><summary>查看触觉内容干预结果 <span>＋</span></summary><div><p>打乱触觉内容后，加入门控通道的模型动作变化更明显；视觉与语言遮蔽下的响应接近基线。这项离线干预用于检查策略是否利用触觉内容。</p><a href="assets/sharpa/gtrca-intervention.png" target="_blank" rel="noopener"><img src="assets/sharpa/gtrca-intervention.png" loading="lazy" alt="触觉打乱、触觉遮蔽、视觉遮蔽和语言遮蔽四种干预下的最终动作敏感度对比。"></a></div></details>
     </article>
 
