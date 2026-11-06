@@ -85,12 +85,19 @@
     </article>
 
     <article class="research-block representation-block" id="representation">
-      <div class="research-heading"><span class="research-number">03</span><div><h3>融合表征 u 的重建验证</h3><p>从融合表征 u 重建 Head Flow 与触觉形变，对照验证集中的真实信号。</p></div><span class="evidence-tag">表征可视化</span></div>
+      <div class="research-heading"><span class="research-number">03</span><div><h3>融合表征 u 的重建验证</h3><p>对照 Head Flow 与触觉形变的参考信号和重建信号，展示 Deform3 与 Deform 两个版本的结果。</p></div><span class="evidence-tag">ID / OOD 可视化</span></div>
+      <div class="reconstruction-version"><h4>Deform3 · Head Flow 与 XYZ 形变</h4><p>融合训练留出任务与留出 episode 的可视化。</p></div>
       <div class="research-video-grid reconstruction-grid">
-        <article class="research-video"><video controls playsinline preload="none" poster="assets/sharpa/deform3-reconstruction.jpg" aria-label="安装电池视觉光流与三维触觉重建对照"><source src="assets/sharpa/deform3-reconstruction.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM3 · GROUND TRUTH / RECONSTRUCTION</p><h4>Deform3：Head flow 与 XYZ 重建</h4><p>验证集 · 安装电池：从融合表征 u 重建 Head Flow 与手指 XYZ 形变，对照真实信号。</p><a href="assets/sharpa/deform3-reconstruction.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
-        <article class="research-video"><video controls playsinline preload="none" poster="assets/sharpa/deform-reconstruction.jpg" aria-label="Deform 版本视触觉融合重建对照"><source src="assets/sharpa/deform-reconstruction.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM · FUSED REPRESENTATION</p><h4>Deform 版本：融合表征重建</h4><p>Deform 版本，展示融合表征对视觉光流与多指触觉信号的重建。</p><a href="assets/sharpa/deform-reconstruction.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
+        <article class="research-video" id="deform3-cup-holdout"><video controls playsinline preload="none" poster="assets/sharpa/deform3-cup-holdout.jpg" aria-label="Deform3 套杯：融合训练留出任务的重建可视化"><source src="assets/sharpa/deform3-cup-holdout.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM3 · OOD / FUSION TASK HOLDOUT</p><h4>套杯 · OOD</h4><p>套杯任务在融合训练阶段留出，对照 Head Flow 与十指 XYZ 形变的参考和重建结果。</p><a href="assets/sharpa/deform3-cup-holdout.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
+        <article class="research-video" id="deform3-battery-holdout"><video controls playsinline preload="none" poster="assets/sharpa/deform3-battery-holdout.jpg" aria-label="Deform3 安装电池：ID 留出 episode 的重建可视化"><source src="assets/sharpa/deform3-battery-holdout.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM3 · ID / HELD-OUT EPISODE</p><h4>安装电池 · 留出 episode</h4><p>同任务的融合训练留出 episode，展示视觉光流与多指触觉形变的重建。</p><a href="assets/sharpa/deform3-battery-holdout.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
       </div>
-      <p class="research-note">GT 为参考信号，Pred 为重建信号；可全屏查看逐帧细节。</p>
+      <p class="research-note">套杯的 OOD 范围为融合训练阶段：冻结的 TacVAE 预训练见过该任务域。安装电池按原视频标注为 ID / 留出 episode。</p>
+      <div class="reconstruction-version"><h4>Deform · ID / OOD 对照</h4><p>对应 encoder 可视化记录中的瓶盖与开柜门任务。</p></div>
+      <div class="research-video-grid reconstruction-grid">
+        <article class="research-video" id="deform-cap-id"><video controls playsinline preload="none" poster="assets/sharpa/deform-cap-id.jpg" aria-label="Deform 瓶盖 ID 重建可视化"><source src="assets/sharpa/deform-cap-id.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM · ID</p><h4>瓶盖操作 · ID</h4><p>训练分布内样例，对照 Head Flow 与十指触觉信号的重建。</p><a href="assets/sharpa/deform-cap-id.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
+        <article class="research-video" id="deform-cabinet-ood"><video controls playsinline preload="none" poster="assets/sharpa/deform-cabinet-ood.jpg" aria-label="Deform 开柜门 OOD 重建可视化"><source src="assets/sharpa/deform-cabinet-ood.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM · OOD</p><h4>开柜门 · OOD</h4><p>基准任务样例，展示分布外场景下视觉光流与触觉信号的重建。</p><a href="assets/sharpa/deform-cabinet-ood.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
+      </div>
+      <p class="research-note">均为离线表征可视化；GT 为参考信号，Pred 为重建或预测信号。Deform 的 ID / OOD 按原记录标注，可全屏查看逐帧细节。</p>
     </article>
 
     <article class="research-block pretrain-block" id="pretrain">
