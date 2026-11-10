@@ -55,8 +55,13 @@
     <p class="research-disclosure"><span>研究进展</span>目前成果未公开，本页仅展示部分内容。</p>
     <p class="research-ownership">负责视触觉融合表征、带触觉信息的 post-train 和 mid-train 验证；以及基模的 pre-train 验证、相关 ablation 和 ego 等数据管线处理。</p>
 
+    <article class="research-block zeroshot-block" id="midtrain-zeroshot">
+      <div class="research-heading"><span class="research-number">01</span><div><h3>Mid-train 后的 Zero-shot 真机演示</h3><p>通过物体、颜色、动作与空间指令的变化，展示 Mid-train 后的 Zero-shot 执行表现。</p></div><span class="evidence-tag">最新演示 · 2026.11</span></div>
+      <article class="research-video zeroshot-video"><video controls playsinline preload="none" poster="assets/sharpa/midtrain-zeroshot-v4.jpg" aria-label="Mid-train 后的 Zero-shot 真机演示合集：物体泛化、颜色理解、物体识别、动作指令、方位理解与多位置连续抓取"><source src="assets/sharpa/midtrain-zeroshot-v4.mp4" type="video/mp4">你的浏览器不支持内嵌视频，请使用下方链接打开。</video><div><p class="eyebrow">MID-TRAIN → ZERO-SHOT · REAL ROBOT</p><h4>从识别目标到连续抓取</h4><p>涵盖物体泛化、颜色理解、物体识别、动作指令、方位理解与多位置连续抓取六类场景，展示目标选择、抓取与放置过程。</p><div class="zeroshot-video-footer"><span>演示合集 · 02:23</span><a href="assets/sharpa/midtrain-zeroshot-v4.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></div></article>
+    </article>
+
     <article class="research-block" id="policy-validation">
-      <div class="research-heading"><span class="research-number">01</span><div><h3>视触觉融合与真机验证</h3><p>将触觉表征接入 GR00T / WLA（团队内基模），在安装电池、擦碗与拧瓶盖等接触操作任务中验证效果。</p></div><span class="evidence-tag">真机评测</span></div>
+      <div class="research-heading"><span class="research-number">02</span><div><h3>视触觉融合与真机验证</h3><p>将触觉表征接入 GR00T / WLA（团队内基模），在安装电池、擦碗与拧瓶盖等接触操作任务中验证效果。</p></div><span class="evidence-tag">真机评测</span></div>
       <div class="comparison-cards">
         <div class="comparison-card"><p>安装电池 · GR00T<span class="comparison-model">Deform3 接入</span></p><div class="rate-change"><span>25<small>%</small></span><span class="rate-arrow">→</span><strong>65<small>%</small></strong></div><div class="comparison-legend"><span>基础模型</span><span>+ Deform3 触觉</span></div><span class="gain">+40 个百分点</span></div>
         <div class="comparison-card"><p>安装电池 · WLA<span class="comparison-model">团队内基模 · Deform3 接入</span></p><div class="rate-change"><span>85<small>%</small></span><span class="rate-arrow">→</span><strong>90<small>%</small></strong></div><div class="comparison-legend"><span>Tactile Query</span><span>+ Deform3 触觉</span></div><span class="gain">+5 个百分点</span></div>
@@ -73,7 +78,7 @@
     </article>
 
     <article class="research-block" id="contact-demos">
-      <div class="research-heading"><span class="research-number">02</span><div><h3>触觉进入 Policy：接触任务 Demo</h3><p>展示触觉接入动作策略后的刷碗、瓶盖、电池与茶盒操作。</p></div><span class="evidence-tag">真实机器人</span></div>
+      <div class="research-heading"><span class="research-number">03</span><div><h3>触觉进入 Policy：接触任务 Demo</h3><p>展示触觉接入动作策略后的刷碗、瓶盖、电池与茶盒操作。</p></div><span class="evidence-tag">真实机器人</span></div>
       <div class="research-video-grid policy-demo-grid">
         <article class="research-video"><video controls playsinline preload="none" poster="assets/sharpa/tactile-wash-bowl.jpg" aria-label="Sharpa 刷碗真机演示"><source src="assets/sharpa/tactile-wash-bowl.mp4" type="video/mp4"></video><div><p class="eyebrow">VISUO-TACTILE MANIPULATION · REAL ROBOT</p><h4>刷碗</h4><p>双手协作固定碗具，抓持海绵并完成内壁擦拭。</p><a href="assets/sharpa/tactile-wash-bowl.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
         <article class="research-video"><video controls playsinline preload="none" poster="assets/sharpa/gtrca-cap.jpg" aria-label="Sharpa 门控触觉策略拧瓶盖真机演示"><source src="assets/sharpa/gtrca-cap.mp4" type="video/mp4"></video><div><p class="eyebrow">GATED TACTILE POLICY · REAL ROBOT</p><h4>抓取与拧瓶盖</h4><p>展示抓持、对准与持续接触中的动作执行。</p><a href="assets/sharpa/gtrca-cap.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
@@ -85,7 +90,7 @@
     </article>
 
     <article class="research-block representation-block" id="representation">
-      <div class="research-heading"><span class="research-number">03</span><div><h3>融合表征 u 的重建验证</h3><p>对照 Head Flow 与触觉形变的参考信号和重建信号，展示 Deform3 与 Deform 两个版本的结果。</p></div><span class="evidence-tag">ID / OOD 可视化</span></div>
+      <div class="research-heading"><span class="research-number">04</span><div><h3>融合表征 u 的重建验证</h3><p>对照 Head Flow 与触觉形变的参考信号和重建信号，展示 Deform3 与 Deform 两个版本的结果。</p></div><span class="evidence-tag">ID / OOD 可视化</span></div>
       <div class="reconstruction-version"><h4>Deform3 · Head Flow 与 XYZ 形变</h4><p>以三维箭头展示十指 XYZ 形变，对照融合训练留出任务与留出 episode 的重建结果。</p></div>
       <div class="research-video-grid reconstruction-grid">
         <article class="research-video" id="deform3-cup-holdout"><video controls playsinline preload="none" poster="assets/sharpa/deform3-cup-holdout-3d-arrows.jpg" aria-label="Deform3 套杯：融合训练留出任务的重建可视化"><source src="assets/sharpa/deform3-cup-holdout-3d-arrows.mp4" type="video/mp4"></video><div><p class="eyebrow">DEFORM3 · OOD / FUSION TASK HOLDOUT</p><h4>套杯 · OOD</h4><p>套杯任务在融合训练阶段留出，对照 Head Flow 与十指 XYZ 形变的参考和重建结果。</p><a href="assets/sharpa/deform3-cup-holdout-3d-arrows.mp4" target="_blank" rel="noopener">单独打开视频 ↗</a></div></article>
@@ -101,7 +106,7 @@
     </article>
 
     <article class="research-block pretrain-block" id="pretrain">
-      <div class="research-heading"><span class="research-number">04</span><div><h3>Pretrain 数据管线与部分预训练工作</h3><p>围绕 Ego 数据处理、联合预训练与下游验证，展示框架、阶段结果和部分离线评测。</p></div><span class="evidence-tag">数据管线 / 预训练验证</span></div>
+      <div class="research-heading"><span class="research-number">05</span><div><h3>Pretrain 数据管线与部分预训练工作</h3><p>围绕 Ego 数据处理、联合预训练与下游验证，展示框架、阶段结果和部分离线评测。</p></div><span class="evidence-tag">数据管线 / 预训练验证</span></div>
       <section class="data-pipeline-overview" id="data-pipeline" aria-labelledby="data-pipeline-title">
         <div class="pretrain-subheading"><p class="eyebrow">EGO DATA PIPELINE</p><h4 id="data-pipeline-title">从原始 Ego 数据到可训练样本</h4><p>串联数据准备、分层语义标注与训练数据筛选，保留质量记录和版本信息。</p></div>
         <div class="ego-pipeline">
